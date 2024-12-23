@@ -36,7 +36,7 @@ base_model = "black-forest-labs/FLUX.1-dev"
 pipe = DiffusionPipeline.from_pretrained(base_model, torch_dtype=torch.bfloat16)
 
 lora_repo = "strangerzonehf/Flux-Sketch-Smudge-LoRA"
-trigger_word = "Sketch paint"  # Leave trigger_word blank if not used.
+trigger_word = "Sketch Smudge"  # Leave trigger_word blank if not used.
 
 pipe.load_lora_weights(lora_repo)
 pipe.to("cuda")
