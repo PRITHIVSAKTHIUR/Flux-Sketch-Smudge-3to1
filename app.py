@@ -8,6 +8,15 @@ import uuid
 from typing import Tuple
 import numpy as np
 
+#---if workspace = local or colab---
+
+# Authenticate with Hugging Face
+from huggingface_hub import login
+
+# Log in to Hugging Face using the provided token
+hf_token = '-----hf-token-----'
+login(hf_token)
+
 def save_image(img):
     unique_name = str(uuid.uuid4()) + ".png"
     img.save(unique_name)
