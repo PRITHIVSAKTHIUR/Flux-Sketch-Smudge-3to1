@@ -125,5 +125,5 @@ You should use `Sketch Smudge` to trigger the image generation.
 
 Weights for this model are available in Safetensors format.
 
-[Download]([/strangerzonehf/Flux-Sketch-Smudge-LoRA/tree/main](https://huggingface.co/strangerzonehf/Flux-Sketch-Smudge-LoRA)) them in the Files & versions tab.
+[Download](https://huggingface.co/strangerzonehf/Flux-Sketch-Smudge-LoRA) them in the Files & versions tab.
 
