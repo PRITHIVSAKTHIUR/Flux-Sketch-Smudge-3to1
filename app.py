@@ -26,7 +26,7 @@ if not torch.cuda.is_available():
 base_model = "black-forest-labs/FLUX.1-dev"
 pipe = DiffusionPipeline.from_pretrained(base_model, torch_dtype=torch.bfloat16)
 
-lora_repo = "strangerzonehf/Sketch-Paint"
+lora_repo = "strangerzonehf/Flux-Sketch-Smudge-LoRA"
 trigger_word = "Sketch paint"  # Leave trigger_word blank if not used.
 
 pipe.load_lora_weights(lora_repo)
