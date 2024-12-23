@@ -13,6 +13,10 @@ short_description: cc - fluxz
 
 Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
 
+# Model description for Flux-Sketch-Smudge-LoRA 
+
+![qwerty.png](https://cdn-uploads.huggingface.co/production/uploads/65bb837dbfb878f46c77de4c/QUlJdOeSPVTaDkuwdwH7Z.png)
+
 # Sketch Smudge Gallery 🎨
 
 Explore a collection of artistic sketches, each crafted to convey unique styles and emotions. From whimsical illustrations to dramatic charcoal sketches, this gallery showcases diverse creative expressions.
@@ -72,3 +76,54 @@ Explore a collection of artistic sketches, each crafted to convey unique styles 
 ### 9. Minimalist Emoji
 ![Minimalist Emoji](images/9.png)  
 *Sketch of a yellow hugging face emoji with big hands. The minimalist design uses negative space on a flat beige background.*
+
+# Image Processing Parameters 
+
+| Parameter                 | Value  | Parameter                 | Value  |
+|---------------------------|--------|---------------------------|--------|
+| LR Scheduler              | constant | Noise Offset              | 0.03   |
+| Optimizer                 | AdamW  | Multires Noise Discount   | 0.1    |
+| Network Dim               | 64     | Multires Noise Iterations | 10     |
+| Network Alpha             | 32     | Repeat & Steps           | 22 & 3290 |
+| Epoch                     | 18   | Save Every N Epochs       | 1     |
+
+    Labeling: florence2-en(natural language & English)
+    
+    Total Images Used for Training : 26 [ 14 bit raw ]
+
+## Best Dimensions & Inference
+
+| **Dimensions** | **Aspect Ratio** | **Recommendation**       |
+|-----------------|------------------|---------------------------|
+| 1280 x 832      | 3:2              | Best                     |
+| 1024 x 1024     | 1:1              | Default                  |
+
+### Inference Range
+
+- **Recommended Inference Steps:** 30–35
+
+## Setting Up
+```python
+import torch
+from pipelines import DiffusionPipeline
+
+base_model = "black-forest-labs/FLUX.1-dev"
+pipe = DiffusionPipeline.from_pretrained(base_model, torch_dtype=torch.bfloat16)
+
+lora_repo = "strangerzonehf/Flux-Sketch-Smudge-LoRA"
+trigger_word = "Sketch Smudge"  
+pipe.load_lora_weights(lora_repo)
+
+device = torch.device("cuda")
+pipe.to(device)
+```
+## Trigger words
+
+You should use `Sketch Smudge` to trigger the image generation.
+
+## Download model
+
+Weights for this model are available in Safetensors format.
+
+[Download](/strangerzonehf/Flux-Sketch-Smudge-LoRA/tree/main) them in the Files & versions tab.
+
